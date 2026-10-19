@@ -56,6 +56,15 @@ jobs:
       - name: Build web app
         run: flutter build web --release --base-href "${{ steps.base.outputs.href }}" --no-tree-shake-icons
 
+      # Browsers (and iPhone home-screen apps) cache these files, so give every
+      # deploy a fresh name and updates show up as soon as the page reloads.
+      - name: Bust cache for this version
+        run: |
+          V="${GITHUB_SHA::8}"
+          sed -i "s/main\.dart\.js/main.dart.js?v=$V/g" build/web/flutter_bootstrap.js
+          sed -i "s/flutter_bootstrap\.js/flutter_bootstrap.js?v=$V/" build/web/index.html
+          grep -o 'main.dart.js?v=[a-z0-9]*' build/web/flutter_bootstrap.js | head -1
+
       - name: Add 404 fallback
         run: cp build/web/index.html build/web/404.html
 
