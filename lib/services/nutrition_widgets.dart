@@ -65,7 +65,7 @@ class NutritionWidgets {
   }
 
   static Future<void> takePending() async {
-    if (kIsWeb || !Platform.isAndroid) return;
+    if (kIsWeb || !(!kIsWeb && Platform.isAndroid)) return;
     try {
       final raw = await HomeWidget.getWidgetData<String>(_pendingKey);
       if (raw == null || raw.isEmpty) return;
@@ -77,7 +77,7 @@ class NutritionWidgets {
   }
 
   static void listenOpen(void Function(String route) onOpen) {
-    if (kIsWeb || !Platform.isAndroid) return;
+    if (kIsWeb || !(!kIsWeb && Platform.isAndroid)) return;
     _route.setMethodCallHandler((call) async {
       final route = call.arguments;
       if (call.method == 'open' && route is String) onOpen(route);
@@ -85,7 +85,7 @@ class NutritionWidgets {
   }
 
   static Future<String?> takeOpen() async {
-    if (kIsWeb || !Platform.isAndroid) return null;
+    if (kIsWeb || !(!kIsWeb && Platform.isAndroid)) return null;
     try {
       return await _route.invokeMethod<String>('take');
     } catch (_) {

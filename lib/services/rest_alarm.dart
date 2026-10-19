@@ -180,7 +180,7 @@ class RestAlarm {
   Future<bool> notificationsAllowed() async {
     if (!_ready) return true;
     try {
-      if (Platform.isIOS) {
+      if ((!kIsWeb && Platform.isIOS)) {
         final options = await _iosPlugin?.checkPermissions();
         return options?.isEnabled ?? true;
       }
@@ -193,7 +193,7 @@ class RestAlarm {
   Future<bool> requestPermission() async {
     if (!_ready) return true;
     try {
-      if (Platform.isIOS) {
+      if ((!kIsWeb && Platform.isIOS)) {
         return await _iosPlugin?.requestPermissions(alert: true, sound: true) ?? true;
       }
       final granted = await _androidPlugin?.requestNotificationsPermission() ?? true;
@@ -214,7 +214,7 @@ class RestAlarm {
   Future<void> fireNow() async {
     final visible = WidgetsBinding.instance.lifecycleState == AppLifecycleState.resumed;
     final custom = customSoundPath?.isNotEmpty ?? false;
-    if (_ready && !visible && !custom && Platform.isAndroid) {
+    if (_ready && !visible && !custom && (!kIsWeb && Platform.isAndroid)) {
       _generation++;
       return;
     }

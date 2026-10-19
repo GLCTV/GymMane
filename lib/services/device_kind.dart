@@ -9,7 +9,7 @@ class DeviceKind {
   static const _channel = MethodChannel('gymmane/device');
 
   static Future<bool> isWatch() async {
-    if (kIsWeb || !Platform.isAndroid) return false;
+    if (kIsWeb || !(!kIsWeb && Platform.isAndroid)) return false;
     try {
       return await _channel.invokeMethod<bool>('isWatch') ?? false;
     } catch (_) {

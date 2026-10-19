@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
@@ -405,7 +406,7 @@ class SettingsScreen extends StatelessWidget {
               ),
             ]),
             const SizedBox(height: 18),
-            if (Platform.isAndroid || Platform.isIOS) ...[
+            if ((!kIsWeb && Platform.isAndroid) || (!kIsWeb && Platform.isIOS)) ...[
               _sectionLabel(gc, t.sectionWidgets),
               const SizedBox(height: 8),
               _linkGroup(gc, [

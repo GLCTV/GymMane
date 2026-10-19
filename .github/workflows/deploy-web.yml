@@ -1,0 +1,76 @@
+name: Deploy web app (iPhone)
+
+# Builds the Flutter web version of GymMane and publishes it on GitHub Pages,
+# so it can be opened in Safari on an iPhone and added to the Home Screen.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      base_href:
+        description: 'Base path. Leave empty for https://<user>.github.io/<repo>/ ; use / for a custom domain'
+        required: false
+        type: string
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+env:
+  FLUTTER_VERSION: '3.41.9'
+
+jobs:
+  build:
+    name: Build web
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          cache: true
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Work out the base path
+        id: base
+        run: |
+          IN="${{ inputs.base_href }}"
+          if [ -n "$IN" ]; then BASE="$IN";
+          elif [ -f web/CNAME ]; then BASE="/";
+          else BASE="/${{ github.event.repository.name }}/"; fi
+          case "$BASE" in /*/|/) ;; *) BASE="/${BASE#/}"; BASE="${BASE%/}/";; esac
+          echo "href=$BASE" >> "$GITHUB_OUTPUT"
+          echo "Base path: $BASE"
+
+      - name: Build web app
+        run: flutter build web --release --base-href "${{ steps.base.outputs.href }}" --no-tree-shake-icons
+
+      - name: Add 404 fallback
+        run: cp build/web/index.html build/web/404.html
+
+      - name: Upload site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: build/web
+
+  deploy:
+    name: Publish to GitHub Pages
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

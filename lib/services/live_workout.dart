@@ -20,11 +20,11 @@ class LiveWorkout {
   static int _flashes = 0;
   static DateTime? _flashAt;
 
-  static bool get _supported => !kIsWeb && (Platform.isAndroid || Platform.isIOS);
+  static bool get _supported => !kIsWeb && ((!kIsWeb && Platform.isAndroid) || (!kIsWeb && Platform.isIOS));
 
   static Future<void> sync() async {
     if (!_supported) return;
-    if (!_listening && Platform.isAndroid) {
+    if (!_listening && (!kIsWeb && Platform.isAndroid)) {
       _listening = true;
       _android.setMethodCallHandler((call) async {
         if (call.method == 'action') _act(call.arguments as String? ?? '');
@@ -117,7 +117,7 @@ class LiveWorkout {
     _lastKey = key;
 
     try {
-      if (Platform.isIOS) {
+      if ((!kIsWeb && Platform.isIOS)) {
         await _channel.invokeMethod<void>('update', {
           'exercise': name,
           'detail': detail,
@@ -190,7 +190,7 @@ class LiveWorkout {
     final wasShown = _lastKey.isNotEmpty;
     _lastKey = '';
     try {
-      if (Platform.isIOS) {
+      if ((!kIsWeb && Platform.isIOS)) {
         await _channel.invokeMethod<void>('end');
       } else if (wasShown || !_cleared) {
         await _android.invokeMethod<void>('end');
