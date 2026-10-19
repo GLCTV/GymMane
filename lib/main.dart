@@ -17,6 +17,10 @@ import 'wear/wear_app.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  FlutterError.onError = (d) {
+    // ignore: avoid_print
+    print('APP ERROR: ${d.exceptionAsString()}\n${d.stack}');
+  };
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: Colors.transparent,
