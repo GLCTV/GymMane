@@ -41,7 +41,7 @@ mixin HomeGymState on FitCore, LibraryState, RoutinesState, WorkoutState {
   /// 'lib' = exercise list, 'plan' = program builder.
   String exTab = 'lib';
   Set<String> homeGear = {};
-  int planDays = 3;
+  int progDays = 3;
   int planLevel = 1;
   List<String> planFocus = [];
   List<String> armParts = [];
@@ -51,7 +51,7 @@ mixin HomeGymState on FitCore, LibraryState, RoutinesState, WorkoutState {
     exHome = j['home'] as bool? ?? false;
     homeGear = ((j['gear'] as List?) ?? const []).whereType<String>().where(kHomeGear.contains).toSet();
     final d = (j['days'] as num?)?.toInt() ?? 3;
-    planDays = d.clamp(2, 6);
+    progDays = d.clamp(2, 6);
     planLevel = ((j['lvl'] as num?)?.toInt() ?? 1).clamp(0, 2);
     planFocus = ((j['focus'] as List?) ?? const []).whereType<String>().where(kPlanGroups.contains).toList();
     armParts = ((j['arms'] as List?) ?? const []).whereType<String>().where(const ['bi', 'tri', 'fa'].contains).toList();
@@ -60,7 +60,7 @@ mixin HomeGymState on FitCore, LibraryState, RoutinesState, WorkoutState {
   Map<String, dynamic> get _homeGymJson => {
         'home': exHome,
         'gear': homeGear.toList(),
-        'days': planDays,
+        'days': progDays,
         'lvl': planLevel,
         if (planFocus.isNotEmpty) 'focus': planFocus,
         if (armParts.isNotEmpty) 'arms': armParts,
@@ -85,8 +85,8 @@ mixin HomeGymState on FitCore, LibraryState, RoutinesState, WorkoutState {
     notifyListeners();
   }
 
-  void setPlanDays(int d) {
-    planDays = d.clamp(2, 6);
+  void setProgDays(int d) {
+    progDays = d.clamp(2, 6);
     _persist();
     notifyListeners();
   }
@@ -344,7 +344,7 @@ mixin HomeGymState on FitCore, LibraryState, RoutinesState, WorkoutState {
   }
 
   List<PlanDay> buildPlan() {
-    final days = planDays, lvl = planLevel, focus = planFocus;
+    final days = progDays, lvl = planLevel, focus = planFocus;
     bool fm(String g) => focus.any((f) => f == g || (f == 'arms' && (g == 'bi' || g == 'tri' || g == 'fa')));
     final seen = <String, int>{};
     final pools = <String, List<Exercise>>{};

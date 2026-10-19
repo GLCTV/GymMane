@@ -316,7 +316,7 @@ class PlanView extends StatelessWidget {
     final plan = fit.buildPlan();
     final vol = fit.planVolume(plan);
     final lv = fit.planLevel;
-    final sched = HomeGymState.planSchedule[fit.planDays]!;
+    final sched = HomeGymState.planSchedule[fit.progDays]!;
     final withEx = plan.where((d) => d.exercises.isNotEmpty).toList();
     final avg = withEx.isEmpty ? 0 : (withEx.map((d) => d.minutes).reduce((a, b) => a + b) / withEx.length).round();
 
@@ -329,7 +329,7 @@ class PlanView extends StatelessWidget {
       children: [
         _label(gc, hs('pdays')),
         SegToggle([
-          for (final d in const [2, 3, 4, 5, 6]) SegOption('$d', fit.planDays == d, () => fit.setPlanDays(d)),
+          for (final d in const [2, 3, 4, 5, 6]) SegOption('$d', fit.progDays == d, () => fit.setProgDays(d)),
         ], hPad: 16),
         const SizedBox(height: 20),
         _label(gc, hs('lv_h')),
@@ -399,7 +399,7 @@ class PlanView extends StatelessWidget {
             fg: gc.text,
             onTap: () {
               final n = fit.savePlan(plan, (d, i) => dayType(d).split(' (').first,
-                  '${hs('program')} · ${hs('lv$lv')} · ${fit.planDays}×');
+                  '${hs('program')} · ${hs('lv$lv')} · ${fit.progDays}×');
               showNotchToast(context, hs('savedall').replaceAll('{n}', '$n'),
                   icon: PhosphorIconsFill.stack, accent: context.gc.sage);
             },
