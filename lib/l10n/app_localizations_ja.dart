@@ -2599,14 +2599,14 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String shareMessage(String name) {
-    return '$name — GymMane でファイルを開いて追加してください。';
+    return '$name — GymHub でファイルを開いて追加してください。';
   }
 
   @override
   String get importRoutines => 'ルーティンを読み込む';
 
   @override
-  String get importPasteHint => 'ここにルーティンを貼り付け：GymMane から共有されたもの、AIの回答、JSON、CSV。';
+  String get importPasteHint => 'ここにルーティンを貼り付け：GymHub から共有されたもの、AIの回答、JSON、CSV。';
 
   @override
   String get pasteAction => '貼り付け';
@@ -2633,10 +2633,10 @@ class AppLocalizationsJa extends AppLocalizations {
   }
 
   @override
-  String get nothingToImport => 'GymMane が読み込めるものがありません';
+  String get nothingToImport => 'GymHub が読み込めるものがありません';
 
   @override
-  String get aiStepCopy => '依頼文をコピーします。あなたの種目リストと GymMane が読む形式が入っています。';
+  String get aiStepCopy => '依頼文をコピーします。あなたの種目リストと GymHub が読む形式が入っています。';
 
   @override
   String get aiStepAsk => '好きなAIに貼り付けて、希望を伝えましょう：週の日数、目標、何週間か。';
@@ -2783,7 +2783,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get shareIntroTitle => 'このルーティンを共有';
 
   @override
-  String get shareIntroBody => 'パートナーや友だち、家族に送りましょう。GymMane で開ける小さなファイルが届き、セットや重量ごとワンタップで追加できます。';
+  String get shareIntroBody => 'パートナーや友だち、家族に送りましょう。GymHub で開ける小さなファイルが届き、セットや重量ごとワンタップで追加できます。';
 
   @override
   String get removedFromRoutine => 'ルーティンから外しました';
@@ -2931,7 +2931,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get stepsInfoRead => '歩数だけを読み取ります。それ以外は読まず、Health Connect に書き込むこともありません。';
 
   @override
-  String get stepsInfoLocal => '歩数は端末内に残ります。GymMane はインターネットに接続しません。';
+  String get stepsInfoLocal => '歩数は端末内に残ります。GymHub はインターネットに接続しません。';
 
   @override
   String get stepsInfoOff => '設定または Health Connect でいつでもオフにできます。';
@@ -4291,7 +4291,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get nutritionAboutWhat =>
-      '食事、水、プロテイン、サプリをトレーニングのすぐ隣で記録できるシンプルな機能です。GymMane はまずジムのアプリです。食事はすべてを一か所にまとめるためのもので、本格的なダイエットアプリの代わりではありません。';
+      '食事、水、プロテイン、サプリをトレーニングのすぐ隣で記録できるシンプルな機能です。GymHub はまずジムのアプリです。食事はすべてを一か所にまとめるためのもので、本格的なダイエットアプリの代わりではありません。';
 
   @override
   String get nutritionAboutScanTitle => 'スキャンは今後もなし';
@@ -4305,7 +4305,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get nutritionAboutLocal =>
-      'アプリには写真付きの食品が500以上入っています。自分の食品を追加したり、写真を変えたり、数値を編集したりできます。GymMane の他の部分と同じく、すべてあなたのスマホに残ります。';
+      'アプリには写真付きの食品が500以上入っています。自分の食品を追加したり、写真を変えたり、数値を編集したりできます。GymHub の他の部分と同じく、すべてあなたのスマホに残ります。';
 
   @override
   String get nutritionAboutBetaTitle => 'まだベータ版';
@@ -4371,7 +4371,7 @@ class AppLocalizationsJa extends AppLocalizations {
   }
 
   @override
-  String get notifSuppTap => 'Tick it off in GymMane once you\'ve taken it.';
+  String get notifSuppTap => 'Tick it off in GymHub once you\'ve taken it.';
 
   @override
   String get suppNoneToday => 'Nothing to take today.';

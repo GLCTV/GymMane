@@ -3004,7 +3004,7 @@ class AppLocalizationsFa extends AppLocalizations {
       'فقط تعداد قدم‌هایت را می‌خواند. هرگز چیز دیگری نمی‌خواند و در Health Connect نمی‌نویسد.';
 
   @override
-  String get stepsInfoLocal => 'قدم‌هایت روی گوشی می‌مانند. GymMane هرگز به اینترنت وصل نمی‌شود.';
+  String get stepsInfoLocal => 'قدم‌هایت روی گوشی می‌مانند. GymHub هرگز به اینترنت وصل نمی‌شود.';
 
   @override
   String get stepsInfoOff => 'هر وقت خواستی از تنظیمات یا Health Connect خاموشش کن.';
@@ -4399,7 +4399,7 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String get nutritionAboutWhat =>
-      'راهی ساده برای ثبت وعده‌ها، آب، پروتئین و مکمل‌ها کنار تمرین‌هایت. GymMane پیش از هر چیز یک اپ باشگاه است: تغذیه اینجاست تا همه‌چیز در یک جا باشد، نه اینکه جای یک اپ رژیم را بگیرد.';
+      'راهی ساده برای ثبت وعده‌ها، آب، پروتئین و مکمل‌ها کنار تمرین‌هایت. GymHub پیش از هر چیز یک اپ باشگاه است: تغذیه اینجاست تا همه‌چیز در یک جا باشد، نه اینکه جای یک اپ رژیم را بگیرد.';
 
   @override
   String get nutritionAboutScanTitle => 'بدون اسکنر، هرگز';
@@ -4413,7 +4413,7 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String get nutritionAboutLocal =>
-      'اپ بیش از ۵۰۰ غذا با عکس دارد. می‌توانی غذاهای خودت را اضافه کنی، عکس‌هایشان را عوض کنی و مقادیرشان را ویرایش کنی. همه‌چیز روی گوشی‌ات می‌ماند، مثل بقیه GymMane.';
+      'اپ بیش از ۵۰۰ غذا با عکس دارد. می‌توانی غذاهای خودت را اضافه کنی، عکس‌هایشان را عوض کنی و مقادیرشان را ویرایش کنی. همه‌چیز روی گوشی‌ات می‌ماند، مثل بقیه GymHub.';
 
   @override
   String get nutritionAboutBetaTitle => 'هنوز آزمایشی';
@@ -4479,7 +4479,7 @@ class AppLocalizationsFa extends AppLocalizations {
   }
 
   @override
-  String get notifSuppTap => 'Tick it off in GymMane once you\'ve taken it.';
+  String get notifSuppTap => 'Tick it off in GymHub once you\'ve taken it.';
 
   @override
   String get suppNoneToday => 'Nothing to take today.';

@@ -487,10 +487,11 @@ class ScreenHeader extends StatelessWidget {
 }
 
 class BetaTag extends StatelessWidget {
-  const BetaTag(this.label, {super.key, this.small = false});
+  const BetaTag(this.label, {super.key, this.small = false, this.isNew = false});
 
   final String label;
   final bool small;
+  final bool isNew;
 
   @override
   Widget build(BuildContext context) {
@@ -503,7 +504,7 @@ class BetaTag extends StatelessWidget {
         border: Border.all(color: gc.accent.withValues(alpha: 0.4), width: 0.8),
       ),
       child: Row(mainAxisSize: MainAxisSize.min, children: [
-        Icon(PhosphorIconsFill.flask, size: small ? 9 : 10.5, color: gc.accent),
+        Icon(isNew ? PhosphorIconsFill.sparkle : PhosphorIconsFill.flask, size: small ? 9 : 10.5, color: gc.accent),
         const SizedBox(width: 3),
         Text(label.toUpperCase(),
             style: AppTheme.f(small ? 8.5 : 9.5, weight: FontWeight.w800, color: gc.accent, letterSpacing: 1.1, height: 1.1)),

@@ -14,6 +14,7 @@ const _kVersion = '1.5.0';
 const _kAuthor = 'InlitX';
 const _kAuthorUrl = 'https://github.com/InlitX';
 const _kRepoUrl = 'https://github.com/InlitX/GymMane';
+const _kForkUrl = 'https://github.com/GLCTV/GymMane';
 const _kKofiUrl = 'https://ko-fi.com/inlitx';
 
 class AboutScreen extends StatelessWidget {
@@ -115,7 +116,7 @@ class AboutScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text('GymMane',
+                Text('GymHub',
                     style: AppTheme.f(33, weight: FontWeight.w800, color: gc.text, letterSpacing: -0.5)),
                 const SizedBox(height: 10),
                 Container(
@@ -184,8 +185,9 @@ class AboutScreen extends StatelessWidget {
 
   Widget _credits(GymColors gc) {
     final rows = <(IconData, String, String, String, Color?)>[
-      (PhosphorIconsFill.heart, t.madeWithLoveBy, _kAuthor, _kAuthorUrl, gc.accent),
-      (PhosphorIconsRegular.githubLogo, t.sourceCode, 'InlitX/GymMane', _kRepoUrl, null),
+      (PhosphorIconsFill.heart, 'Based on GymMane by InlitX', _kAuthor, _kRepoUrl, gc.accent),
+      (PhosphorIconsRegular.githubLogo, t.sourceCode, 'GLCTV/GymMane · GPL-3.0', _kForkUrl, null),
+      (PhosphorIconsRegular.user, 'GymHub', 'GLC_TV', _kAuthorUrl, null),
       (PhosphorIconsRegular.coffee, t.buyCoffee, 'ko-fi.com/inlitx', _kKofiUrl, null),
     ];
     return Container(

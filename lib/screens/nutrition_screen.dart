@@ -181,7 +181,7 @@ class _NutritionScreenState extends State<NutritionScreen> {
               title: t.nutrition,
               subtitle: _dayLabel,
               onBack: fit.backFromNutrition,
-              badge: BetaTag(t.sectionBeta),
+              badge: const BetaTag('NEW', isNew: true),
               actions: [
                 RoundAction(
                   label: t.nutritionAboutTitle,

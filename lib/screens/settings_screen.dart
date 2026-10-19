@@ -39,9 +39,7 @@ import '../widgets/steps_card.dart';
 import '../widgets/ui_kit.dart';
 
 const _kRepoUrl = 'https://github.com/InlitX/GymMane';
-const _kBugUrl = '$_kRepoUrl/issues/new?labels=bug';
 const _kFeatureUrl = '$_kRepoUrl/issues/new?labels=enhancement';
-const _kKofiUrl = 'https://ko-fi.com/inlitx';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -395,14 +393,14 @@ class SettingsScreen extends StatelessWidget {
               ),
             ]),
             const SizedBox(height: 18),
-            _group(gc, t.sectionBeta, [
+            _group(gc, 'NEW', [
               GestureDetector(
                 behavior: HitTestBehavior.opaque,
                 onTap: () => fit.setNutritionBeta(!fit.nutritionBeta),
                 child: _prefRow(gc, PhosphorIconsRegular.forkKnife, t.nutritionBeta,
                     TinySwitch(on: fit.nutritionBeta),
                     hint: t.nutritionBetaHint,
-                    badge: BetaTag(t.sectionBeta, small: true)),
+                    badge: const BetaTag('NEW', small: true, isNew: true)),
               ),
             ]),
             const SizedBox(height: 18),
@@ -429,15 +427,6 @@ class SettingsScreen extends StatelessWidget {
               (PhosphorIconsRegular.trash, t.resetData, () => _resetAll(context)),
             ], danger: 5),
             const SizedBox(height: 18),
-            _sectionLabel(gc, t.support),
-            const SizedBox(height: 8),
-            _linkGroup(gc, [
-              (PhosphorIconsRegular.bug, t.reportBug, () => _open(context, _kBugUrl)),
-              (PhosphorIconsRegular.lightbulb, t.requestFeature, () => _open(context, _kFeatureUrl)),
-              (PhosphorIconsRegular.githubLogo, t.starOnGithub, () => _open(context, _kRepoUrl)),
-              (PhosphorIconsRegular.coffee, t.buyCoffee, () => _open(context, _kKofiUrl)),
-            ]),
-            const SizedBox(height: 22),
             _linkGroup(gc, [
               (PhosphorIconsRegular.info, t.aboutGymmane, fit.goAbout),
             ]),
@@ -668,7 +657,7 @@ class SettingsScreen extends StatelessWidget {
     await file.writeAsString(fit.exportCsv());
     if (!context.mounted) return;
     await SharePlus.instance.share(
-      ShareParams(files: [XFile(file.path)], subject: 'GymMane workouts'),
+      ShareParams(files: [XFile(file.path)], subject: 'GymHub workouts'),
     );
   }
 
@@ -691,7 +680,7 @@ class SettingsScreen extends StatelessWidget {
     await file.writeAsBytes(await buildBackupZip(), flush: true);
     if (!context.mounted) return;
     await SharePlus.instance.share(
-      ShareParams(files: [XFile(file.path)], subject: 'GymMane backup'),
+      ShareParams(files: [XFile(file.path)], subject: 'GymHub backup'),
     );
   }
 

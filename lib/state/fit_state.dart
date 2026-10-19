@@ -35,6 +35,7 @@ import '../services/train_reminder.dart';
 import '../services/workout_import.dart';
 
 part 'awards_state.dart';
+part 'home_gym_state.dart';
 part 'fit_core.dart';
 part 'library_state.dart';
 part 'measures_state.dart';
@@ -51,7 +52,7 @@ part 'tools_state.dart';
 part 'workout_state.dart';
 
 class FitState extends FitCore
-    with ToolsState, LibraryState, SettingsState, NotesState, PlacesState, MeasuresState, MomentsState, TimelineState, StatsState, StepsState, NutritionState, AwardsState, RoutinesState, WorkoutState {
+    with ToolsState, LibraryState, SettingsState, NotesState, PlacesState, MeasuresState, MomentsState, TimelineState, StatsState, StepsState, NutritionState, AwardsState, RoutinesState, WorkoutState, HomeGymState {
   void loadFromStore() {
     final data = withMergedExercises(Store.instance.load());
     _loading = true;
@@ -230,6 +231,7 @@ class FitState extends FitCore
     keepScreenOn = data['keepAwake'] as bool? ?? true;
     startCountdown = data['countdown'] as bool? ?? true;
     gamification = data['gamify'] as bool? ?? true;
+    _loadHomeGym(data);
     logRpe = data['rpe'] as bool? ?? false;
     effortScale = data['effort'] == 'rir' ? 'rir' : 'rpe';
     stepKg = _stepFrom(data['stepKg'], SettingsState.kgSteps, 2.5);
@@ -428,6 +430,7 @@ class FitState extends FitCore
         'keepAwake': keepScreenOn,
         'countdown': startCountdown,
         'gamify': gamification,
+        'homeGym': _homeGymJson,
         'rpe': logRpe,
         'effort': effortScale,
         'stepKg': stepKg,
@@ -801,7 +804,7 @@ class FitState extends FitCore
     final recent = sessions.where((s) => s.date.isAfter(month)).length;
     final records = personalRecords.take(5).toList();
     final lines = <String>[
-      'GymMane · ${activePlace?.name ?? t.placeAll}',
+      'GymHub · ${activePlace?.name ?? t.placeAll}',
       t.planAboutMe,
       '- ${t.planBody(profile.sex == 'female' ? t.female : t.male, profile.age, heightLabel(profile.heightCm), weightLabel(profile.weightKg))}',
       '- ${t.planDays(weeklyTarget)}',

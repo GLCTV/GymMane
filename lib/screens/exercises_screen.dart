@@ -17,6 +17,7 @@ import '../widgets/exercise_media.dart';
 import '../widgets/glass.dart';
 import '../widgets/svg_icon.dart';
 import '../widgets/ui_kit.dart';
+import 'home_gym_view.dart';
 
 class ExercisesScreen extends StatefulWidget {
   const ExercisesScreen({super.key});
@@ -51,7 +52,10 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
   @override
   Widget build(BuildContext context) {
     final gc = context.gc;
-    final list = fit.exercisesFiltered;
+    final home = fit.exHome;
+    final plan = fit.exTab == 'plan';
+    final list = home ? fit.exercisesFiltered.where(fit.homeOk).toList() : fit.exercisesFiltered;
+    final lead = home ? 1 : 0;
 
     return SafeArea(
       bottom: false,
@@ -62,6 +66,9 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
             padding: const EdgeInsets.fromLTRB(20, 12, 20, 12),
             child: _header(context, gc, list.length),
           ),
+          if (plan)
+            const Expanded(child: PlanView())
+          else
           Expanded(
             child: Stack(children: [
               Positioned.fill(
@@ -69,9 +76,13 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
               key: const PageStorageKey('exercises'),
               controller: _scroll,
               padding: const EdgeInsets.fromLTRB(20, 0, 20, 110),
-              itemCount: list.isEmpty ? 1 : list.length,
+              itemCount: lead + (list.isEmpty ? 1 : list.length),
               itemBuilder: (context, i) {
-                if (list.isEmpty) return _empty(gc);
+                if (lead == 1 && i == 0) {
+                  return const Padding(padding: EdgeInsets.only(bottom: 6), child: HomeGearCard());
+                }
+                i -= lead;
+                if (list.isEmpty) return home ? homeEmptyHint(gc) : _empty(gc);
                 final ex = list[i];
                 final first = i == 0 || list[i - 1].primary != ex.primary;
                 final last = i == list.length - 1 || list[i + 1].primary != ex.primary;
@@ -153,7 +164,7 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
                 children: [
                   ScreenTitle(t.exercises),
                   const SizedBox(height: 4),
-                  Text(t.libraryCount(count),
+                  Text(fit.exTab == 'plan' ? hs('pg_t') : t.libraryCount(count),
                       style: AppTheme.f(13, weight: FontWeight.w500, color: gc.textSecondary)),
                 ],
               ),
@@ -167,9 +178,13 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
           ],
         ),
         const SizedBox(height: 14),
-        SearchField(controller: _c, hint: t.searchExercises, onChanged: fit.setExSearch),
-        const SizedBox(height: 10),
-        _quickChips(context, gc),
+        const GymHomeBar(),
+        if (fit.exTab != 'plan') ...[
+          const SizedBox(height: 12),
+          SearchField(controller: _c, hint: t.searchExercises, onChanged: fit.setExSearch),
+          const SizedBox(height: 10),
+          _quickChips(context, gc),
+        ],
       ],
     );
   }

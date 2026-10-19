@@ -1239,7 +1239,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get importHint =>
-      'Elige una copia .zip (o el .json antiguo) exportada de GymMane. Reemplazará tus datos actuales, media incluido.';
+      'Elige una copia .zip (o el .json antiguo) exportada de GymHub. Reemplazará tus datos actuales, media incluido.';
 
   @override
   String get import => 'Importar';
@@ -1291,7 +1291,7 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String get aboutGymmane => 'Sobre GymMane';
+  String get aboutGymmane => 'Sobre GymHub';
 
   @override
   String get yourProfile => 'TU PERFIL';
@@ -2048,7 +2048,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get aiIntro =>
-      'GymMane no habla con ninguna IA. Tú sacas tu lista de ejercicios, la pegas en el asistente que ya uses y traes su respuesta de vuelta. Del móvil no sale nada solo.';
+      'GymHub no habla con ninguna IA. Tú sacas tu lista de ejercicios, la pegas en el asistente que ya uses y traes su respuesta de vuelta. Del móvil no sale nada solo.';
 
   @override
   String aiMissing(int n) {
@@ -2074,7 +2074,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get awardFirstStepName => 'Primer paso';
 
   @override
-  String get awardFirstStepLine => 'Bienvenido a GymMane. Esta te la regala la casa.';
+  String get awardFirstStepLine => 'Bienvenido a GymHub. Esta te la regala la casa.';
 
   @override
   String get awardFirstWorkoutName => 'Primer entreno';
@@ -2676,7 +2676,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String shareMessage(String name) {
-    return '$name — abre el archivo con GymMane para añadirlo.';
+    return '$name — abre el archivo con GymHub para añadirlo.';
   }
 
   @override
@@ -2684,7 +2684,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get importPasteHint =>
-      'Pega aquí una rutina: una compartida desde GymMane, la respuesta de una IA, JSON o CSV.';
+      'Pega aquí una rutina: una compartida desde GymHub, la respuesta de una IA, JSON o CSV.';
 
   @override
   String get pasteAction => 'Pegar';
@@ -2716,11 +2716,11 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String get nothingToImport => 'Aquí no hay nada que GymMane pueda importar';
+  String get nothingToImport => 'Aquí no hay nada que GymHub pueda importar';
 
   @override
   String get aiStepCopy =>
-      'Copia la petición. Lleva tu lista de ejercicios y el formato que GymMane entiende.';
+      'Copia la petición. Lleva tu lista de ejercicios y el formato que GymHub entiende.';
 
   @override
   String get aiStepAsk =>
@@ -2870,7 +2870,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get shareIntroBody =>
-      'Mándasela a tu pareja, a un amigo o a tu familia. Les llega un archivo pequeño que se abre con GymMane y la añade de un toque, con sus series y pesos.';
+      'Mándasela a tu pareja, a un amigo o a tu familia. Les llega un archivo pequeño que se abre con GymHub y la añade de un toque, con sus series y pesos.';
 
   @override
   String get removedFromRoutine => 'Quitado de la rutina';
@@ -3019,7 +3019,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get stepsInfoRead => 'Solo lee tu número de pasos. Nunca lee nada más ni escribe en Health Connect.';
 
   @override
-  String get stepsInfoLocal => 'Tus pasos se quedan en el móvil. GymMane nunca se conecta a internet.';
+  String get stepsInfoLocal => 'Tus pasos se quedan en el móvil. GymHub nunca se conecta a internet.';
 
   @override
   String get stepsInfoOff => 'Puedes quitarlo cuando quieras, en Ajustes o en Health Connect.';
@@ -4438,7 +4438,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get nutritionAboutWhat =>
-      'Una forma sencilla de apuntar comidas, agua, proteína y suplementos junto a tus entrenos. GymMane es ante todo una app de gimnasio: Nutrición está para que lo tengas todo en un mismo sitio, no para sustituir a una app de dietas.';
+      'Una forma sencilla de apuntar comidas, agua, proteína y suplementos junto a tus entrenos. GymHub es ante todo una app de gimnasio: Nutrición está para que lo tengas todo en un mismo sitio, no para sustituir a una app de dietas.';
 
   @override
   String get nutritionAboutScanTitle => 'Sin escáner, nunca';
@@ -4452,7 +4452,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get nutritionAboutLocal =>
-      'La app trae más de 500 alimentos con foto. Puedes añadir los tuyos, cambiarles la foto y editar sus valores. Todo se queda en tu móvil, como el resto de GymMane.';
+      'La app trae más de 500 alimentos con foto. Puedes añadir los tuyos, cambiarles la foto y editar sus valores. Todo se queda en tu móvil, como el resto de GymHub.';
 
   @override
   String get nutritionAboutBetaTitle => 'Todavía en beta';
@@ -4518,7 +4518,7 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String get notifSuppTap => 'Márcalo en GymMane cuando lo tomes.';
+  String get notifSuppTap => 'Márcalo en GymHub cuando lo tomes.';
 
   @override
   String get suppNoneToday => 'Hoy no te toca ninguno.';

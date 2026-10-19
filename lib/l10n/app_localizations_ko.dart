@@ -1255,7 +1255,7 @@ class AppLocalizationsKo extends AppLocalizations {
   }
 
   @override
-  String get aboutGymmane => 'GymMane 정보';
+  String get aboutGymmane => 'GymHub 정보';
 
   @override
   String get yourProfile => '내 프로필';
@@ -4382,7 +4382,7 @@ class AppLocalizationsKo extends AppLocalizations {
   }
 
   @override
-  String get notifSuppTap => 'Tick it off in GymMane once you\'ve taken it.';
+  String get notifSuppTap => 'Tick it off in GymHub once you\'ve taken it.';
 
   @override
   String get suppNoneToday => 'Nothing to take today.';

@@ -40,6 +40,16 @@ class HomeScreen extends StatelessWidget {
           children: riseAll([
             _topBar(gc),
             const SizedBox(height: 20),
+            if (fit.nutritionBeta) ...[
+              HomeFolder(
+                title: _tc(t.nutrition),
+                detail: _nutritionDetail,
+                peek: const NutritionPeek(),
+                badge: const BetaTag('NEW', small: true, isNew: true),
+                onTap: fit.goNutrition,
+              ),
+              const SizedBox(height: 14),
+            ],
             if (fit.showFocus || fit.todayRoutine?.exerciseIds.isNotEmpty == true) ...[
               _hero(context, gc),
               const SizedBox(height: 14),
@@ -149,16 +159,6 @@ class HomeScreen extends StatelessWidget {
                 ),
               ],
             ),
-            if (fit.nutritionBeta) ...[
-              const SizedBox(height: 12),
-              HomeFolder(
-                title: _tc(t.nutrition),
-                detail: _nutritionDetail,
-                peek: const NutritionPeek(),
-                badge: BetaTag(t.sectionBeta, small: true),
-                onTap: fit.goNutrition,
-              ),
-            ],
           ]),
         ),
       ),
